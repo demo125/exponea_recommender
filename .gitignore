@@ -1,0 +1,7 @@
+__pycache__
+config.py
+other
+.ipynb_checkpoints
+data
+dataset_catalog.csv
+dataset_events.csv
