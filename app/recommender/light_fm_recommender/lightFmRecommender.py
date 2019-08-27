@@ -2,16 +2,19 @@ from lightfm import LightFM
 import numpy as np
 import pandas as pd
 import os
-from recommender.light_fm_recommender.mySparseMatrix import MySparseMatrix
 from lightfm.data import Dataset
 from recommender.recommenderABC import RecommenderABC
 
+#preprocessing and training logic is described in notebooks/1_collaborative_recommender.ipynb
 class LightFmRecommender(RecommenderABC):
 
     def __init__(self):
         dir_path = os.path.dirname(os.path.realpath(__file__))
         self.data_dir = dir_path + '/../data/'
         self.model = None
+
+        self.min_product_events_count = 50
+        self.min_customer_events_count = 7
 
     def train(self):
         events = pd.read_csv(self.data_dir + "/dataset_events.csv")
@@ -52,15 +55,14 @@ class LightFmRecommender(RecommenderABC):
         idxs = event_counts[event_counts.n_purchases > 1].index
         event_counts.loc[idxs, 'rating'] = 6
 
-
-        min_product_events_count = 50
+        
         grouped_events_by_product_id = events.groupby(['product_id']).customer_id.agg('count').to_frame('n_events').reset_index()
-        products_with_more_than_n_events = grouped_events_by_product_id[grouped_events_by_product_id.n_events>min_product_events_count]
+        products_with_more_than_n_events = grouped_events_by_product_id[grouped_events_by_product_id.n_events>self.min_product_events_count]
         products_with_more_than_n_events = np.array(products_with_more_than_n_events.product_id)
 
-        min_customer_events_count = 7
+        
         grouped_events_by_customer_id = events.groupby(['customer_id']).product_id.agg('count').to_frame('n_events').reset_index()
-        customers_with_more_than_n_events = grouped_events_by_customer_id[grouped_events_by_customer_id.n_events>min_customer_events_count]
+        customers_with_more_than_n_events = grouped_events_by_customer_id[grouped_events_by_customer_id.n_events>self.min_customer_events_count]
         customers_with_more_than_n_events = np.array(customers_with_more_than_n_events.customer_id)
 
 

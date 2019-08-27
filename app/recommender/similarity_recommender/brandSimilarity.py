@@ -3,6 +3,8 @@ import numpy as np
 from recommender.similarity_recommender.similarityABC import SimilarityABC
 from sklearn.preprocessing import OneHotEncoder
 
+
+#preprocessing and training logic is described in notebooks/2_similarity_recommender.ipynb
 class BrandSimilarity(SimilarityABC):
 
     def __init__(self, weight=1):

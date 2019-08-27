@@ -3,6 +3,7 @@ import numpy as np
 import os
 from recommender.recommenderABC import RecommenderABC
 
+#preprocessing and training logic is described in notebooks/3_popular_item_recommender.ipynb
 class PopRecommender(RecommenderABC):
 
     def __init__(self):
@@ -23,11 +24,11 @@ class PopRecommender(RecommenderABC):
         self.sorted_popular_item_ids = sorted_popular_items.product_id.values
         print('pop recommender trained')
     
+    #can always recommend popular items
     def can_recommend(self):
         return True
 
     def recommend(self, n):
         if self.sorted_popular_item_ids is None: self.train()
-        print('pop recommendation')
         return self.sorted_popular_item_ids[:n].tolist()
 

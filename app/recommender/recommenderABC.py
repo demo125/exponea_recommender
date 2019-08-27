@@ -6,10 +6,11 @@ class RecommenderABC(ABC):
     def train(self):
         pass
     
+    #find out if recommender model can perform recommendation
     @abstractmethod
-    def can_recommend(self):
+    def can_recommend(self, customer_id):
         pass
     
     @abstractmethod
-    def recommend(self):
+    def recommend(self, customer_id, n):
         pass
