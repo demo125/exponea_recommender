@@ -14,5 +14,5 @@ Goal of the assignment was to create personalized recommender system for serving
  </p>
   <p>Simple REST API is build for serving real-time recommendations. The api has only few endpoints for train the models, finding similar items and for making recommendations. Training of the first model takes around 20 seconds, the other two are almost instant.
   </p>
-  <p>I used popular python libraries for data handling ang visualisation - numpy, pandas, matplotlib, sklearn and LightFM for collaborative filtering based model. The API is build in Flask and runs on its own development server. The application was build in anaconda enviroment. Package list is exported to requirements.txt. 
+  <p>I used popular python libraries for data handling ang visualisation - numpy, pandas, matplotlib, sklearn and LightFM for collaborative filtering based model. The API is build in Flask and runs on its own development server. The application was build in anaconda enviroment. Package list was exported to requirements.txt. 
   </p>
