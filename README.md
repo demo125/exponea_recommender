@@ -10,7 +10,7 @@ Goal of the assignment was to create personalized recommender system for serving
   <p>
   Lastly the third and simplest model is build for customers with no interactions. Because of no customer features the model could do nothing but recommend the most popular products otherwise it would be possible to build model for finding similar users and use their preferences for the new user. In the real world we could use at least location of the customer which can be easily found from ip or we could use seasonalty of products.
   </p>
-  <p>More detailed findings can be found in jupyter notebooks in /notebooks directory. There is one notebook for every model. Notebooks are also exported to HTML in the same directory which can be easily opened.
+  <p>Much more detailed findings can be found in jupyter notebooks in /notebooks directory. There is one notebook for every model. Notebooks are also exported to HTML in the same directory which can be easily opened.
  </p>
   <p>Simple REST API is build for serving real-time recommendations. The api has only few endpoints for train the models, finding similar items and for making recommendations. Training of the first model takes around 20 seconds, the other two are almost instant.
   </p>
